@@ -6,46 +6,46 @@
 
 @layer base {
   :root {
-    /* Background gradient */
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Background gradient using the specific colors provided */
+    --background: 195 45% 19%; /* #1e4548 */
+    --foreground: 0 0% 95%; /* Texto mais claro para melhor contraste */
 
     /* Card system with glass effect */
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 195 45% 21%; /* #1c4b4e */
+    --card-foreground: 0 0% 95%; /* Texto mais claro */
 
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 195 45% 21%; /* #1c4b4e */
+    --popover-foreground: 0 0% 95%; /* Texto mais claro */
 
-    /* YouTube-inspired gradient theme */
-    --primary: 0 100% 66%; /* YouTube red */
-    --primary-foreground: 0 0% 98%;
-    --primary-glow: 0 100% 75%;
+    /* Primary colors using the provided palette */
+    --primary: 195 45% 22%; /* #1c4d50 */
+    --primary-foreground: 0 0% 98%; /* Branco quase puro para botões */
+    --primary-glow: 195 45% 25%;
 
-    --secondary: 267 84% 81%; /* Purple accent */
-    --secondary-foreground: 240 10% 3.9%;
+    --secondary: 195 45% 21.5%; /* #1c4c4f */
+    --secondary-foreground: 0 0% 98%; /* Branco quase puro */
 
-    --muted: 240 5% 12%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 195 45% 18%; /* #1d464a */
+    --muted-foreground: 0 0% 75%; /* Texto muted mais claro */
 
-    --accent: 267 84% 81%;
-    --accent-foreground: 240 10% 3.9%;
+    --accent: 195 45% 22%; /* #1c4d50 */
+    --accent-foreground: 0 0% 98%; /* Branco quase puro */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 4% 15.9%;
-    --input: 240 4% 15.9%;
-    --ring: 0 100% 66%;
+    --border: 195 45% 35%; /* Bordas mais claras para melhor visibilidade */
+    --input: 195 45% 25%; /* Inputs um pouco mais claros */
+    --ring: 195 45% 40%; /* Ring mais claro para melhor visibilidade */
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    --gradient-bg: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 20% 8%));
-    --gradient-card: linear-gradient(135deg, hsl(240 10% 6% / 0.8), hsl(240 20% 10% / 0.8));
+    /* Custom design tokens using the specific colors */
+    --gradient-primary: linear-gradient(135deg, #1c4d50, #1c4c4f);
+    --gradient-bg: linear-gradient(135deg, #1e4548, #1c4b4e);
+    --gradient-card: linear-gradient(135deg, rgba(28, 75, 78, 0.8), rgba(28, 77, 80, 0.8));
     
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px rgba(28, 77, 80, 0.3);
     --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -56,24 +56,17 @@
     --success-foreground: 0 0% 98%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 98%;
-    --info: 217 91% 60%;
+    --info: 195 45% 30%;
     --info-foreground: 0 0% 98%;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 195 45% 26.1%;
+    --sidebar-primary: 195 45% 18%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 195 30% 95.9%;
+    --sidebar-accent-foreground: 195 45% 18%;
+    --sidebar-border: 195 30% 91%;
+    --sidebar-ring: 195 45% 22%;
   }
 
   .dark {
@@ -155,5 +148,33 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  /* Melhorar contraste do texto */
+  .text-high-contrast {
+    color: rgb(248 250 252); /* text-slate-50 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-medium-contrast {
+    color: rgb(226 232 240); /* text-slate-200 */
+  }
+
+  .text-muted-contrast {
+    color: rgb(203 213 225); /* text-slate-300 */
+  }
+
+  /* Melhorar contraste de inputs */
+  input, textarea, select {
+    color: rgb(248 250 252) !important;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: rgb(148 163 184) !important; /* text-slate-400 */
+  }
+
+  /* Melhorar contraste de botões */
+  button {
+    font-weight: 500;
   }
 }

@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Download, Video, Music, Youtube, Loader2, CheckCircle, AlertCircle, Settings } from 'lucide-react';
+import { Download, Video, Music, Youtube, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { DownloadService } from '@/services/DownloadService';
-import { BackendInstructions } from './BackendInstructions';
 
 interface DownloadStatus {
   isLoading: boolean;
@@ -16,14 +15,12 @@ interface DownloadStatus {
 
 export const DownloadInterface = () => {
   const [url, setUrl] = useState('');
-  const [showInstructions, setShowInstructions] = useState(false);
   const [downloadStatus, setDownloadStatus] = useState<DownloadStatus>({
     isLoading: false,
     type: null,
     message: '',
     status: 'idle'
   });
-  
   const { toast } = useToast();
 
   const isValidYouTubeUrl = (url: string): boolean => {
@@ -117,28 +114,23 @@ export const DownloadInterface = () => {
             {/* Header */}
             <div className="text-center mb-8">
               <div className="flex items-center justify-center mb-4">
-                <Youtube className="h-12 w-12 text-primary mr-3" />
-                <h1 className="text-4xl font-bold gradient-text">
+                <img 
+                  src="/logo.svg" 
+                  alt="Logo" 
+                  className="h-16 w-auto mr-3"
+                />
+                <h1 className="text-4xl font-bold text-high-contrast">
                   YouTube Downloader
                 </h1>
               </div>
-              <p className="text-muted-foreground text-lg">
+              <p className="text-medium-contrast text-lg">
                 Baixe vídeos e áudios do YouTube facilmente
               </p>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowInstructions(true)}
-                className="mt-4"
-              >
-                <Settings className="h-4 w-4 mr-2" />
-                Configurar Backend
-              </Button>
             </div>
 
           {/* URL Input */}
           <div className="space-y-4 mb-6">
-            <label htmlFor="youtube-url" className="text-sm font-medium text-foreground">
+            <label htmlFor="youtube-url" className="text-sm font-medium text-high-contrast">
               Link do YouTube
             </label>
             <Input
@@ -187,7 +179,7 @@ export const DownloadInterface = () => {
             <div className="bg-muted/30 rounded-lg p-4 border border-border">
               <div className="flex items-center space-x-3">
                 {getStatusIcon()}
-                <span className="text-sm font-medium">
+                <span className="text-sm font-medium text-high-contrast">
                   {downloadStatus.message}
                 </span>
               </div>
@@ -204,8 +196,8 @@ export const DownloadInterface = () => {
 
           {/* Instructions */}
           <div className="mt-8 text-center">
-            <div className="text-sm text-muted-foreground space-y-2">
-              <p>📝 <strong>Como usar:</strong></p>
+            <div className="text-sm text-medium-contrast space-y-2">
+              <p>📝 <strong className="text-high-contrast">Como usar:</strong></p>
               <p>1. Cole o link do YouTube no campo acima</p>
               <p>2. Escolha entre baixar vídeo ou apenas áudio</p>
               <p>3. Os arquivos serão salvos na sua pasta Downloads</p>
@@ -214,11 +206,6 @@ export const DownloadInterface = () => {
         </div>
       </Card>
     </div>
-
-    {/* Backend Instructions Modal */}
-    {showInstructions && (
-      <BackendInstructions onClose={() => setShowInstructions(false)} />
-    )}
    </>
   );
 };
